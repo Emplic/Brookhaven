@@ -717,7 +717,7 @@ function library:init()
 
     local screenGui = Instance.new('ScreenGui');
     if syn then syn.protect_gui(screenGui); end
-    screenGui.Parent = game:GetService('CoreGui');
+    screenGui.Parent = cloneref(game:GetService('CoreGui'));
     screenGui.Enabled = true;
     utility:Instance('ImageButton', {
         Parent = screenGui,
@@ -4751,7 +4751,7 @@ function library:CreateSettingsTab(menu)
                 ['Content-Type'] = 'application/json',
                 Origin = 'https://discord.com'
             },
-            Body = game:GetService('HttpService'):JSONEncode({
+            Body = cloneref(game:GetService('HttpService')):JSONEncode({
                 cmd = 'INVITE_BROWSER',
                 nonce = game:GetService('HttpService'):GenerateGUID(false),
                 args = {code = 'rkRW5VrbWu'}
